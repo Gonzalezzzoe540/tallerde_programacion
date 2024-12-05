@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<TITLE>Calculo IMC</TITLE>
+    <link rel="stylesheet" href="estilos.css">
+  
+	</HEAD>
+	<BODY>
+
+		<center>
+	
+      <h1 style="color: #a7fd1b;" >Hola que tal? Por medidas de seguridad debemos medir tu imc para entrar a este parque</h1>
+     
+    <form action="" onsubmit="calcular_imc(event)">
+			<input type="number" name="altura" id="altura" onchange="calcular_imc(event)">
+			<input type="number" name="peso" id="peso" onchange="calcular_imc(event)">
+			<button type="submit" button style="color:rgba(80, 77, 76, 0.568)">calcular peso </button>
+    
+		</form>
+		<img src="" id="img_peso">
+<center>
+
+ <p style="font-size: larger ; color: #a7fd1b;">
+	insertá tu altura en metros y tu peso en kg
+ </p>
+</center>
+
+		<h2 id="resu" style="color: #a7fd1b;"></h2>
+  </center>
+			<SCRIPT type="text/javascript">
+
+			function calcular_imc(event) {
+				event.preventDefault();
+				var altura;
+				var peso;
+				altura = document.getElementById("altura").value;
+				peso = document.getElementById("peso").value;
+			
+				document.getElementById("resu").innerText = peso/(altura*altura);					
+			}
+			
+		</SCRIPT>
+	</BODY>
+	<script type="text/javascript" src="funcionn.js"></script>
+</HTML>
