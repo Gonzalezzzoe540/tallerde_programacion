@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Calculadora de Conversiones de Longitud</title>
+<link rel="stylesheet" href="src/css/estilo.css">
+</head>
+<style>
+body {
+    background-image: url(src/gif_para_fondo.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+input#inputValue {
+    border-color: orange;
+    border-width: thick;
+}
+select#fromUnit {
+    border-color: orange;
+    border-width: thick;
+}
+select#toUnit {
+    border-color: orange;
+    border-width: thick;
+}
+select#fromUnit {
+    font-family: monospace;
+    color: darkgoldenrod;
+}
+input#inputValue {
+    font-family: monospace;
+    color: darkgoldenrod;
+}
+select#toUnit {
+    font-family: monospace;
+    color: darkgoldenrod;
+}
+button {
+    font-family: monospace;
+    color: darkgoldenrod;
+    background: white;
+}
+button {
+    border-color: orange;
+    border-width: medium;
+}
+.calculator {
+    color: darkorange;
+    font-size: x-large;
+    font-family: fantasy;
+}
+h3#result {
+    font-size: xx-large;
+    color: darkorange;
+    font-family: fantasy;
+}
+h2 {
+    color: darkorange;
+    text-align: center;
+    font-size: -webkit-xxx-large;
+    font-family: fantasy;
+}
+.calculator {
+    text-align: center;
+    position: absolute;
+}
+</style>
+
+<div class="calculator">
+    <h2>Calculadora de Conversiones de Longitud</h2>
+    <input type="number" id="inputValue"
+    
+    <label for="fromUnit">De:</label>
+    <select id="fromUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>
+    
+    <label for="toUnit">A:</label>
+    <select id="toUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>
+    
+    <button onclick="convert()">Convertir</button>
+    
+    <h3 id="result">Resultado: </h3>
+</div>
+
+<script>
+    function convert() {
+        const inputValue = parseFloat(document.getElementById('inputValue').value);
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;
+        
+        if (isNaN(inputValue)) {
+            document.getElementById('result').innerText = "Por favor, ingresa un valor numérico.";
+            return;
+        }
+
+        const conversionFactors = {
+            km: 1000000, 
+            m: 1000,     
+            cm: 10,      
+            mm: 1        
+        };
+
+        const valueInMicrometers = inputValue * conversionFactors[fromUnit];
+        
+        const convertedValue = valueInMicrometers / conversionFactors[toUnit];
+
+        document.getElementById('result').innerText =  `Resultado: ${convertedValue} ${toUnit} `;
+    }
+</script>
+
+</body>
+</html>
